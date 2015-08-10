@@ -30,7 +30,7 @@
     </div>
     <div class="col-md-3">
       <label>Approximate %le</label>
-      <input id="pile" type="text" class="form-control" placeholder="e.g. 65"/>
+      <input id="pile" type="text" class="form-control" placeholder="leave blank if using first button"/>
     </div><div class="col-md-6">
       <hr>
       <button id="twoStep" type="button" class="btn btn-success">Estimate from marks</button><br><br>
@@ -143,6 +143,8 @@
     
   };
   var calcZScoreFromPercentile = function() {
+    document.getElementById("pile").className = (parseFloat(document.getElementById("pile").value) === NaN) ? "form-control err" : "form-control";
+
     var score = internz.ppf(parseFloat(document.getElementById("pile").value * 0.01));
     document.getElementById("results").innerHTML = "zScore: " + (Math.round(score * 100) / 100).toString();
   };
@@ -153,7 +155,7 @@
        + (2 * parseFloat(document.getElementById("med4").value));
       agg = agg / 3;
       var res = Math.round(aggToPct(agg) * 100) / 100;
-      res = res < 0 ? 0.1 : res;
+      res = res < 0 ? 1 : res;
       res = res > 100 ? 99.9 : res;
       document.getElementById("pile").value = res;
       calcZScoreFromPercentile();
