@@ -13,10 +13,12 @@ var internz = gaussian(3.5, 1.0);
 
 };
 var calcZScoreFromPercentile = function() {
-  document.getElementById("pile").className = (parseFloat(document.getElementById("pile").value) === NaN) ? "form-control err" : "form-control";
-
+  if (document.getElementById("pile").value === "" || isNaN(document.getElementById("pile").value)) {
+    document.getElementById("results").innerHTML = "invalid percentile input";
+  } else {
   var score = internz.ppf(parseFloat(document.getElementById("pile").value * 0.01));
   document.getElementById("results").innerHTML = "zScore: " + (Math.round(score * 100) / 100).toString();
+  }
 };
 
 document.getElementById("oneStep").onclick = calcZScoreFromPercentile;
@@ -26,8 +28,12 @@ document.getElementById("twoStep").onclick = function() {
   + (2 * parseFloat(document.getElementById("med4").value));
   agg = agg / 3;
   var res = Math.round(aggToPct(agg) * 100) / 100;
-  res = res < 0 ? 1 : res;
+  res = res < 1 ? 1 : res;
   res = res > 100 ? 99.9 : res;
   document.getElementById("pile").value = res;
-  calcZScoreFromPercentile();
+  if (isNaN(res)) {
+    document.getElementById("results").innerHTML = "invalid mark input";
+  } else {
+    calcZScoreFromPercentile();
+  }
 }
