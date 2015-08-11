@@ -10,16 +10,14 @@
 </head>
 <body>
   <div class="container">
-    <h2>InternZ score calculator <small> beta one?</small></h2>
+    <h2>InternZ score estimator <small> for the Monash MBBS, beta one?</small></h2>
   <div class="row">
   <form id="scores">
-    <div class="col-md-3 form-group">
+    <div class="col-md-6 form-group">
       <label>MED2000</label>
       <input id="med2" type="text" class="form-control" placeholder="score / 100"/>
       <label>MED4000</label>
       <input id ="med4" type="text" class="form-control" placeholder="score / 100"/> 
-    </div>
-    <div class="col-md-3">
       <label>Approximate %le</label>
       <input id="pile" type="text" class="form-control" placeholder="leave blank if using first button"/>
     </div><div class="col-md-6">
@@ -29,6 +27,15 @@
       <h3 id="results"></h3>
     </div>
   </form>
+  </div><div id="info">
+  <p>
+    <b>To estimate a z-score from subject marks:</b> Complete the MED2000 and MED4000 boxes only. This will also estimate a equivalent percentile for your mark
+  </p><p>
+    <b>To calculate a z-score from a percentile in the cohort:</b> Fill out the bottom input only
+  <hr>
+  This estimator uses a stastical mark:percentile model based on some data collected from current Year 5D students - thank you for your contribution!
+  <br><br>
+  An idea by Vanessa Wong, written by Kevin Shi. We make no guarantee about the accuracy or usability of this tool, but hope that it will be useful. You can see the code <a href="https://github.com/cachey/internz">here</a> (licenced under the GNU General Public Licence)
   </div>
 </div> 
   <script type="text/javascript" src="gaussian.js"></script>
