@@ -1,3 +1,5 @@
+// HI VANESSA THIS FILE HAS CHANGED
+
 var aggToPct = function(agg) {
   return -220292 
   + 15453.5 * agg 
@@ -29,7 +31,7 @@ document.getElementById("twoStep").onclick = function() {
   agg = agg / 3;
   var res = Math.round(aggToPct(agg) * 100) / 100;
   res = res < 1 ? 1 : res;
-  res = res > 100 ? 99.9 : res;
+  res = res > 99 ? 99.5 : res;
   document.getElementById("pile").value = res;
   if (isNaN(res)) {
     document.getElementById("results").innerHTML = "invalid mark input";
